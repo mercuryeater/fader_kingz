@@ -105,6 +105,7 @@ export default function Root() {
                 value="true"
                 {...register("autorizacion")}
                 className="radio-input"
+                defaultChecked
               />
               Sí
             </label>

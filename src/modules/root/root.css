@@ -102,7 +102,7 @@
 .form-input {
   width: 100%;
   padding: 12px 15px;
-  background-color: #c9b693;
+  background-color: #d6c19e;
   border: none;
   border-radius: 4px;
   color: #333;
@@ -112,7 +112,15 @@
 }
 
 .form-input:focus {
-  background-color: #b8a582;
+  background-color: #c4ae89;
+}
+
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus,
+.form-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #d6c19e inset !important;
+  -webkit-text-fill-color: #333 !important;
 }
 
 /* Authorization Box */

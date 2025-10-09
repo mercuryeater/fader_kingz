@@ -121,21 +121,21 @@ export default function Root() {
           </div>
         </div>
 
-        {/* Video preview */}
-        <div className="video-section">
-          <h3 className="video-title">Checkea nuestro último lanzamiento:</h3>
-          <div className="video-placeholder">
-            <div className="video-frame">
-              <span className="video-text">CYPHER</span>
-              <span className="video-subtitle">SILVER SELECTIONS</span>
-            </div>
-          </div>
-        </div>
-
         <button type="submit" className="submit-button">
           ENVIAR
         </button>
       </form>
+
+      {/* Video preview */}
+      <div className="video-section">
+        <h3 className="video-title">Checkea nuestro último lanzamiento:</h3>
+        <div className="video-placeholder">
+          <div className="video-frame">
+            <span className="video-text">CYPHER</span>
+            <span className="video-subtitle">SILVER SELECTIONS</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

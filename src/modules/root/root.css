@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Linear+B&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Linear+B&display=swap");
 
 .root-container {
   min-height: 100vh;
@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Noto Sans Linear B', sans-serif;
+  font-family: "Noto Sans Linear B", sans-serif;
 }
 
 /* Header */
@@ -125,14 +125,14 @@
 
 /* Authorization Box */
 .authorization-box {
-  background-color: #16B29D;
+  background-color: #16b29d;
   padding: 20px;
   border-radius: 8px;
   margin: 30px 0;
 }
 
 .authorization-text {
-  color: #E8DCC4;
+  color: #e8dcc4;
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -148,7 +148,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #E8DCC4;
+  color: #e8dcc4;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -161,12 +161,12 @@
   appearance: none;
   border: 1px solid #0d3329;
   border-radius: 50%;
-  background-color: #E8DCC4;
+  background-color: #e8dcc4;
   position: relative;
 }
 
 .radio-input:checked::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -180,58 +180,57 @@
 /* Video Section */
 .video-section {
   margin: 30px 0;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
 .video-title {
   color: #ff7729;
-  font-size: 16px;
+  font-size: 32px;
   font-weight: bold;
-  margin-bottom: 15px;
 }
 
 .video-placeholder {
   background: linear-gradient(135deg, #1a4d3d 0%, #0d3329 100%);
+  box-shadow: 0 0 100px -10px #ff7729;
   border-radius: 8px;
   padding: 8px;
-}
-
-.video-frame {
-  background: linear-gradient(135deg, #2a5d4d 0%, #1d3f35 100%);
-  aspect-ratio: 16 / 9;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+  animation: float 3s ease-in-out infinite;
+  transition: box-shadow 0.3s ease;
   position: relative;
-  overflow: hidden;
 }
 
-.video-frame::before {
-  content: "";
+.video-placeholder:hover {
+  cursor: pointer;
+  box-shadow: 0 0 120px 0px #ff7729;
+}
+
+.video-play-logo {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #efe1d4;
+  font-size: 64px;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-.video-text {
-  color: #ff7729;
-  font-size: 48px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  z-index: 1;
+.video-placeholder:hover .video-play-logo {
+  opacity: 1;
 }
 
-.video-subtitle {
-  color: #7dcdc1;
-  font-size: 16px;
-  font-weight: 600;
-  z-index: 1;
+.spotifyImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
 }
 
 /* Submit Button */
@@ -255,6 +254,17 @@
 
 .submit-button:active {
   transform: scale(0.98);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Responsive */

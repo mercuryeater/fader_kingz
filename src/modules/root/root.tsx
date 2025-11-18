@@ -1,8 +1,9 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaPlay } from "react-icons/fa";
 import "./root.css";
+import config from "@/config";
 
 interface FormData {
   nombre: string;
@@ -13,10 +14,39 @@ interface FormData {
 }
 
 export default function Root() {
+  const INSTAGRAM_URL = "https://www.instagram.com/faderkingz/";
+  const YOUTUBE_URL = "https://www.youtube.com/@faderkingz";
+  const SPOTIFY_PLAYLIST =
+    "https://open.spotify.com/playlist/719DzvpkDnrGDq7ymjeRhn?si=V-AUMuP_Q86JoCyYVlRqwA";
   const { register, handleSubmit } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    const modelData = {
+      nombre: data.nombre,
+      documento: data.documento,
+      telefono: data.telefono,
+      email: data.correo,
+      quiere_suscribirse: data.autorizacion,
+      evento: "Silver Selections Vol. 2",
+    };
+
+    if (!config.EXCEL_HOST) return console.error("EXCEL_HOST no está definido");
+
+    try {
+      const respuesta = await fetch(config.EXCEL_HOST, {
+        method: "POST",
+        body: JSON.stringify(modelData),
+      });
+
+      const resultado = await respuesta.json();
+
+      if (resultado.status === "success") {
+        alert("¡Registro exitoso!");
+        // Limpiar formulario
+      }
+    } catch (error) {
+      alert("Error al enviar: " + error);
+    }
   };
 
   return (
@@ -29,10 +59,20 @@ export default function Root() {
           className="logo"
         />
         <div className="social-icons">
-          <a href="#" className="social-icon">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+          >
             <FaInstagram />
           </a>
-          <a href="#" className="social-icon">
+          <a
+            href={YOUTUBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+          >
             <FaYoutube />
           </a>
         </div>
@@ -128,12 +168,19 @@ export default function Root() {
 
       {/* Video preview */}
       <div className="video-section">
-        <h3 className="video-title">Checkea nuestro último lanzamiento:</h3>
-        <div className="video-placeholder">
-          <div className="video-frame">
-            <span className="video-text">CYPHER</span>
-            <span className="video-subtitle">SILVER SELECTIONS</span>
-          </div>
+        <h3 className="video-title">
+          Escucha la playlist de nuestros artistas
+        </h3>
+        <div
+          className="video-placeholder"
+          onClick={() => window.open(SPOTIFY_PLAYLIST, "_blank")}
+        >
+          <FaPlay className="video-play-logo" />
+          <img
+            src="/FD_KINGZ.jpg"
+            alt="Fader Kingz Logo"
+            className="spotifyImage"
+          />
         </div>
       </div>
     </div>

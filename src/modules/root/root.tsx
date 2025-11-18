@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaPlay } from "react-icons/fa";
 import "./root.css";
 import config from "@/config";
 
@@ -168,11 +168,14 @@ export default function Root() {
 
       {/* Video preview */}
       <div className="video-section">
-        <h3 className="video-title">Checkea nuestros MCS:</h3>
+        <h3 className="video-title">
+          Escucha la playlist de nuestros artistas
+        </h3>
         <div
           className="video-placeholder"
           onClick={() => window.open(SPOTIFY_PLAYLIST, "_blank")}
         >
+          <FaPlay className="video-play-logo" />
           <img
             src="/FD_KINGZ.jpg"
             alt="Fader Kingz Logo"
